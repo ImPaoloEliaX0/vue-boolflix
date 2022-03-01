@@ -9,7 +9,10 @@ npm<template>
             <lang-flag class="language" :iso="film.original_language"/>
             <p class="vote">{{film.vote_average}}</p>
         </div>
-        
+             <div v-if="film.vote_average != 0">
+                <i v-for="(star, index) in Math.ceil(item.vote_average / 2)" :key="index" class="fas fa-star"></i> 
+                 <i v-for="(star, index) in 5 - Math.ceil(item.vote_average / 2)" :key="index" class="fa-regular fa-star"></i> 
+                 </div>
     </div>
 </template>
 
@@ -81,6 +84,11 @@ npm<template>
         }
         p.vote{
             top: 400px;
+        }
+          p.overview{
+            top: 280px;
+            padding: 15px;
+            text-align: left;
         }
     }
 </style>

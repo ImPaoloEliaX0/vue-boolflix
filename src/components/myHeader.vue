@@ -5,7 +5,7 @@
     <div class="search">
       <input type="text" v-model="titleText" @keyup.enter="SearchFilm">
 
-      <button @click="SearchFilm">Search for films</button>
+      <button @click="CallServer">Search for films</button>
     </div>
 
   </header>
@@ -22,7 +22,7 @@
     },
     methods: {
       SearchFilm(){
-        this.$emit("SearchFilm", this.titleText);
+        this.$emit("CallServer", this.titleText);
       }
     }
   }
