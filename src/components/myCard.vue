@@ -1,14 +1,17 @@
 npm<template>
+<!-- container generale della card-->
     <div class="card">
+        <!-- richiamo dinamicamente le immagini accedendo al path fornito dal server-->
         <img :src="Imgslink + film.poster_path" alt="">
         <div class="overlay"></div>
-
+<!-- definisco titolo e informazioni del film -->
         <div class="card-info">
             <h1>{{film.title}}</h1>
             <h2>{{film.original_title}}</h2>
             <lang-flag class="language" :iso="film.original_language"/>
             <p class="vote">{{film.vote_average}}</p>
         </div>
+        <!-- Creo due cicli for per mostrare le stelle piene e quelle vuote-->
              <div v-if="film.vote_average != 0">
                 <i v-for="(star, index) in Math.ceil(item.vote_average / 2)" :key="index" class="fas fa-star"></i> 
                  <i v-for="(star, index) in 5 - Math.ceil(item.vote_average / 2)" :key="index" class="fa-regular fa-star"></i> 
@@ -17,6 +20,7 @@ npm<template>
 </template>
 
 <script>
+/* importo il componente per le bandiere della nazionalità */
     import LangFlag from 'vue-lang-code-flags';
 
     export default {
@@ -32,6 +36,8 @@ npm<template>
         props: ["film"]
     }
 </script>
+
+<!-- stilizzazione singola card film/serie tv -->
 <style scoped lang="scss">
     .card{
         margin: 16px;

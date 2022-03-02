@@ -1,11 +1,14 @@
 <template>
   <header>
+    <!-- logo netflix-->
     <img src="https://www.edigitalagency.com.au/wp-content/uploads/Netflix-logo-red-black-png.png" alt="Logo di netflix">
 
+<!-- barra di ricerca per trovare i titoli dei film-->
     <div class="search">
       <input type="text" v-model="titleText" @keyup.enter="SearchFilm">
 
-      <button @click="CallServer">Search for films</button>
+<!-- chiamo la funzione searchfilm premendo il bottone-->
+      <button @click="SearchFilm">Search for films</button>
     </div>
 
   </header>
@@ -20,6 +23,7 @@
         titleText: ""
       }
     },
+    /* uso la emit per richiamare la funzione di ricerca in App.vue*/
     methods: {
       SearchFilm(){
         this.$emit("CallServer", this.titleText);
@@ -28,6 +32,7 @@
   }
 </script>
 
+<!-- Stilizzazione dell'header -->
 <style lang="scss">
   header{
     display: flex;
